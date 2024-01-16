@@ -27,3 +27,20 @@ func (s *ServiceTicketDefault) GetAll() (t map[int]internal.TicketAttributes, er
 func (s *ServiceTicketDefault) GetTotalAmountTickets() (total int, err error) {
 	return s.rp.GetTotalTickets()
 }
+
+// GetTicketsByDestinationCountry returns the tickets filtered by destination country
+func (s *ServiceTicketDefault) GetTicketsByDestinationCountry(country string) (int, error) {
+	tAux, err := s.rp.GetTicketsByDestinationCountry(country)
+	l := len(tAux)
+	return l, err
+}
+
+// GetTicketsByDestinationCountry returns the tickets filtered by destination country
+func (s *ServiceTicketDefault) GetAverageByDestinationCountry(country string) (float64, error) {
+
+	total, err := s.rp.GetTotalTickets()
+	tFiltered, err := s.rp.GetTicketsByDestinationCountry(country)
+
+	l := float64(len(tFiltered)) * 100.0 / float64(total)
+	return l, err
+}

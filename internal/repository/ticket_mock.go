@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"context"
-
 	"github.com/bootcamp-go/go-web/internal"
 )
 
@@ -46,7 +44,7 @@ func (r *RepositoryTicketMock) GetTotalTickets() (int, error) {
 }
 
 // GetTicketsByDestinationCountry returns the tickets filtered by destination country
-func (r *RepositoryTicketMock) GetTicketsByDestinationCountry(ctx context.Context, country string) (t map[int]internal.TicketAttributes, err error) {
+func (r *RepositoryTicketMock) GetTicketsByDestinationCountry(country string) (t map[int]internal.TicketAttributes, err error) {
 	// spy
 	r.Spy.GetTicketsByDestinationCountry++
 

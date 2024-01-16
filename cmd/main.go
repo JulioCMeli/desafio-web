@@ -101,7 +101,9 @@ func (a *ApplicationDefault) SetUp() (err error) {
 		w.Write([]byte("OK"))
 	})
 
-	(*a).rt.Get("/tickets", h.GetAll())
+	(*a).rt.Get("/ticket", h.GetAll())
+	(*a).rt.Get("/ticket/getByCountry/{dest}", h.GetTicketsByDestinationCountry())
+	(*a).rt.Get("/ticket/getAverage/{dest}", h.GetAverageByDestinationCountry())
 
 	return
 }

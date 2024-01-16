@@ -40,15 +40,15 @@ func (r *RepositoryTicketMap) GetTotalTickets() (int, error) {
 	return i, nil
 }
 
-// // GetTicketsByDestinationCountry returns the tickets filtered by destination country
-// func (r *RepositoryTicketMap) GetTicketsByDestinationCountry(country string) (t map[int]internal.TicketAttributes, err error) {
-// 	// create a copy of the map
-// 	t = make(map[int]internal.TicketAttributes)
-// 	for k, v := range r.db {
-// 		if v.Country == country {
-// 			t[k] = v
-// 		}
-// 	}
+// GetTicketsByDestinationCountry returns the tickets filtered by destination country
+func (r *RepositoryTicketMap) GetTicketsByDestinationCountry(country string) (t map[int]internal.TicketAttributes, err error) {
+	// create a copy of the map
+	t = make(map[int]internal.TicketAttributes)
+	for k, v := range r.db {
+		if v.Country == country {
+			t[k] = v
+		}
+	}
 
-// 	return
-// }
+	return
+}
